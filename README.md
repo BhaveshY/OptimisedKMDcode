@@ -6,7 +6,7 @@ A comprehensive collection of modular ML pipelines for both regression and class
 
 ```
 OptimisedKMDcode/
-├── code_documentation.pdf    # Comprehensive code documentation
+├── code_documentation.pdf    # KMD Prediction Report
 ├── Regression_Pipeline/      # Pipeline for regression tasks
 │   ├── main.py
 │   ├── src/
@@ -22,7 +22,7 @@ OptimisedKMDcode/
 
 ## 📖 Documentation
 
-For detailed code documentation, implementation details, and API reference, see [code_documentation.pdf](./code_documentation.pdf).
+For the complete KMD Prediction in High-Dimensional Clinical Data report, see [code_documentation.pdf](./code_documentation.pdf).
 
 ## Pipelines
 
