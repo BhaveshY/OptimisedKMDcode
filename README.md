@@ -6,7 +6,8 @@ A comprehensive collection of modular ML pipelines for both regression and class
 
 ```
 OptimisedKMDcode/
-├── Regression_Pipeline/     # Pipeline for regression tasks
+├── code_documentation.pdf    # Comprehensive code documentation
+├── Regression_Pipeline/      # Pipeline for regression tasks
 │   ├── main.py
 │   ├── src/
 │   ├── requirements.txt
@@ -18,6 +19,10 @@ OptimisedKMDcode/
     ├── requirements.txt
     └── README.md
 ```
+
+## 📖 Documentation
+
+For detailed code documentation, implementation details, and API reference, see [code_documentation.pdf](./code_documentation.pdf).
 
 ## Pipelines
 
