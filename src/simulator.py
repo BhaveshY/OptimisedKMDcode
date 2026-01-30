@@ -1,13 +1,6 @@
 """
-SIMULATOR MODULE (REGRESSION) - OPTIMIZED
+SIMULATOR MODULE (REGRESSION)
 =========================================
-Changes:
-- Decoupled Reduction from SMOGN.
-- SMOGN is now optional via 'apply_smogn' flag.
-- Uses safe Numpy indexing and preserves DataFrame columns.
-- Fixed TypeError by handling mixed data types.
-- UPDATE: Reduced SMOGN Aggression. Added 'smogn_limit' to cap synthetic generation 
-  at 100% of original rare size (1:1 ratio) instead of 300%.
 """
 
 import numpy as np
