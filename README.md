@@ -1,103 +1,91 @@
-# KMD Prediction in High-Dimensional Clinical Data Pipeline
+# Optimised Machine Learning Pipelines
 
-A modular regression pipeline for comparing feature selection methods and data augmentation techniques on imbalanced datasets.
+A comprehensive collection of modular ML pipelines for both regression and classification tasks, featuring advanced feature selection methods and data augmentation techniques.
 
-## Features
-
-- Multiple regression models: XGBoost, TabPFN
-- Feature selection: GRACES (GNN-based), DeepFS (autoencoder-based)
-- Data simulation: Configurable reduction and SMOGN oversampling
-- Hybrid approaches combining feature selection with TabPFN
-- Comprehensive evaluation metrics: RMSE, MAE, R²
-
-## Requirements
-
-Python 3.8 or higher is required.
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-**Note**: PyTorch Geometric may require additional setup. Refer to the [official installation guide](https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html) if you encounter issues.
-
-## Usage
-
-Basic usage:
-
-```bash
-python main.py --data dataset.csv --target target_column
-```
-
-### Arguments
-
-**Required:**
-- `--data`: Path to CSV dataset
-- `--target`: Target column name
-
-**Optional:**
-- `--method`: Modeling method (default: `XGBOOST`)
-  - Choices: `TABPFN`, `GRACES`, `XGBOOST`, `DEEPFS`, `DEEPFS_TABPFN`, `GRACES_TABPFN`, `ALL`
-- `--reduction`: Data reduction percentage (default: `0.0`, range: 0.0-1.0)
-- `--reductions`: Comma-separated list of reduction values (e.g., `0.0,0.3,0.6`)
-- `--smogn`: Enable SMOGN oversampling for imbalanced regression
-- `--features`: Number of features to select (default: `100`)
-
-### Examples
-
-Run XGBoost with full data:
-
-```bash
-python main.py --data data.csv --target price
-```
-
-Compare multiple methods with data reduction:
-
-```bash
-python main.py --data data.csv --target price --method ALL --reductions 0.0,0.3,0.6
-```
-
-Run DeepFS + TabPFN hybrid with SMOGN:
-
-```bash
-python main.py --data data.csv --target price --method DEEPFS_TABPFN --smogn --features 50
-```
-
-## Methods
-
-- **XGBOOST**: Baseline gradient boosting
-- **TABPFN**: Transformer-based prior-fitted network
-- **GRACES**: GNN-based feature selection + XGBoost
-- **DEEPFS**: Supervised autoencoder feature selection + XGBoost
-- **DEEPFS_TABPFN**: DeepFS feature selection + TabPFN inference
-- **GRACES_TABPFN**: GRACES feature selection + TabPFN inference
-
-## Project Structure
+## Repository Structure
 
 ```
 OptimisedKMDcode/
-├── main.py              # CLI entry point
-├── src/
-│   ├── pipeline.py      # Main execution paths
-│   ├── simulator.py     # Data reduction and SMOGN
-│   ├── toolbox.py       # Feature selection methods
-│   └── evaluation.py    # Metrics calculation
-└── requirements.txt     # Dependencies
+├── Regression_Pipeline/     # Pipeline for regression tasks
+│   ├── main.py
+│   ├── src/
+│   ├── requirements.txt
+│   └── README.md
+│
+└── Classification_Pipeline/  # Pipeline for classification tasks
+    ├── main.py
+    ├── src/
+    ├── requirements.txt
+    └── README.md
 ```
 
-## Output
+## Pipelines
 
-Results are printed to console with metrics for each method and configuration. Output includes:
+### 🔵 Regression Pipeline
 
-- RMSE (Root Mean Squared Error)
-- MAE (Mean Absolute Error)
-- R² (Coefficient of Determination)
+High-dimensional clinical data regression pipeline with:
+- **Models**: XGBoost, TabPFN
+- **Feature Selection**: GRACES (GNN-based), DeepFS (autoencoder-based)
+- **Data Augmentation**: SMOGN oversampling for imbalanced regression
+- **Metrics**: RMSE, MAE, R²
 
-Results are sorted by RMSE (ascending) with best models at the top.
+[→ View Regression Pipeline Documentation](./Regression_Pipeline/README.md)
 
-## Notes
+### 🟢 Classification Pipeline
 
-- TabPFN has limitations: max 100 features, best on datasets with <2000 samples
-- SMOGN is designed for imbalanced regression and may not be necessary for balanced datasets
-- Feature selection methods (GRACES, DeepFS) are computationally intensive on large datasets
+Modular classification pipeline with:
+- **Models**: TabPFN, XGBoost, Logistic Regression
+- **Feature Selection**: GRACES (GNN-based), DeepFS (autoencoder-based)
+- **Data Augmentation**: SMOTE oversampling for imbalanced classes
+- **Metrics**: Accuracy, F1, F1-Weighted, Precision, Recall, AUC-ROC
+
+[→ View Classification Pipeline Documentation](./Classification_Pipeline/README.md)
+
+## Quick Start
+
+### Regression
+
+```bash
+cd Regression_Pipeline
+pip install -r requirements.txt
+python main.py --data dataset.csv --target target_column
+```
+
+### Classification
+
+```bash
+cd Classification_Pipeline
+pip install -r requirements.txt
+python main.py --data dataset.csv --target target_column
+```
+
+## Common Features
+
+Both pipelines share:
+
+- **Modular Architecture**: Easy to extend with new methods
+- **Multiple Feature Selection Methods**: GRACES and DeepFS implementations
+- **Data Simulation**: Configurable data reduction and oversampling
+- **Hybrid Approaches**: Combine feature selection with powerful classifiers/regressors
+- **Comprehensive Evaluation**: Detailed metrics and performance tracking
+
+## Requirements
+
+- Python 3.8+
+- PyTorch & PyTorch Geometric
+- scikit-learn
+- XGBoost
+- TabPFN (optional but recommended)
+
+Refer to individual pipeline `requirements.txt` files for complete dependencies.
+
+## Citation
+
+If you use these pipelines in your research, please cite the original papers for:
+- **GRACES**: Chen et al. "Graph Convolutional Network-based Feature Selection" (arXiv:2211.14144)
+- **DeepFS**: Li et al. "Deep Feature Screening" (arXiv:2204.01682)
+- **TabPFN**: Hollmann et al. "TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second"
+
+## License
+
+MIT License
